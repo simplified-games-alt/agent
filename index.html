@@ -566,9 +566,289 @@ input{font-family:inherit}
 .footer-status{display:flex;align-items:center;gap:8px}
 .footer-status-dot{width:8px;height:8px;border-radius:50%;background:var(--cyber-green)}
 .footer-status-text{font-size:0.75rem;color:var(--slate-500)}
+
+/* ================================================================
+   NEW FEATURES — ADDED
+   ================================================================ */
+
+/* ---- LIGHT THEME OVERRIDES ---- */
+body.light{
+  --nexus-900:#f8fafc;
+  --nexus-800:#ffffff;
+  --nexus-700:#eef2f7;
+  --nexus-600:#e2e8f0;
+  --slate-300:#334155;
+  --slate-400:#475569;
+  --slate-500:#64748b;
+  --slate-600:#94a3b8;
+  background:#f8fafc;color:#1e293b;
+}
+body.light .grad-text-white{background:linear-gradient(90deg,#0f172a,#334155,#475569);-webkit-background-clip:text;background-clip:text}
+body.light #navbar.scrolled{background:rgba(248,250,252,0.85);border-bottom:1px solid rgba(0,0,0,0.06);box-shadow:0 4px 20px rgba(0,0,0,0.06)}
+body.light .nav-logo-text{color:#0f172a}
+body.light .section-title,body.light .feature-title,body.light .step-title,body.light .pricing-name,body.light .agent-detail-name,body.light .author-name,body.light .faq-q span,body.light .hero-stat-value,body.light .stat-num{color:#0f172a}
+body.light .feature-card,body.light .step-card,body.light .pricing-card,body.light .testimonial-card,body.light .agent-tab,body.light .agent-detail,body.light .faq-item,body.light .blog-card,body.light .calc-card,body.light .compare-card{background:#ffffff;border-color:rgba(0,0,0,0.08)}
+body.light #mobile-menu{background:rgba(255,255,255,0.97)}
+body.light .terminal,body.light .msg-bubble.system-bubble,body.light .msg-bubble.agent-bubble{background:#ffffff;border-color:rgba(0,0,0,0.08)}
+body.light ::-webkit-scrollbar-track{background:#e2e8f0}
+body.light ::-webkit-scrollbar-thumb{background:#cbd5e1}
+body.light .cmdk-panel{background:#ffffff;border-color:rgba(0,0,0,0.1)}
+
+/* ---- SCROLL PROGRESS BAR ---- */
+#scroll-progress{
+  position:fixed;top:0;left:0;height:3px;width:0%;z-index:200;
+  background:linear-gradient(90deg,var(--cyber-blue),var(--cyber-purple),var(--cyber-pink));
+  box-shadow:0 0 10px rgba(6,182,212,0.5);transition:width 0.1s linear;
+}
+
+/* ---- THEME TOGGLE + ICON NAV BUTTONS ---- */
+.nav-icon-btn{
+  width:38px;height:38px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+  color:var(--slate-400);background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);
+  transition:all 0.2s;
+}
+.nav-icon-btn:hover{color:#fff;background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.15)}
+body.light .nav-icon-btn{background:rgba(0,0,0,0.04);border-color:rgba(0,0,0,0.08)}
+body.light .nav-icon-btn:hover{color:#0f172a;background:rgba(0,0,0,0.08)}
+.cmdk-hint{display:none;align-items:center;gap:4px;font-size:0.7rem;color:var(--slate-500);
+  border:1px solid rgba(255,255,255,0.12);border-radius:6px;padding:3px 7px;margin-left:4px}
+@media(min-width:1024px){.cmdk-hint{display:inline-flex}}
+
+/* ---- BACK TO TOP ---- */
+#back-to-top{
+  position:fixed;bottom:24px;right:24px;width:48px;height:48px;border-radius:50%;z-index:90;
+  background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:0 10px 30px rgba(6,182,212,0.3);
+  opacity:0;visibility:hidden;transform:translateY(20px);transition:all 0.3s;
+}
+#back-to-top.show{opacity:1;visibility:visible;transform:translateY(0)}
+#back-to-top:hover{transform:translateY(-4px);box-shadow:0 15px 40px rgba(6,182,212,0.4)}
+
+/* ---- STATS / IMPACT SECTION ---- */
+.stats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+@media(min-width:768px){.stats-grid{grid-template-columns:repeat(4,1fr)}}
+.stat-box{
+  text-align:center;padding:32px 20px;border-radius:16px;
+  background:rgba(17,24,39,0.4);border:1px solid rgba(255,255,255,0.05);transition:all 0.3s;
+}
+.stat-box:hover{border-color:rgba(6,182,212,0.3);transform:translateY(-4px)}
+.stat-num{font-size:clamp(2rem,4vw,2.8rem);font-weight:800;color:#fff;line-height:1}
+.stat-label{font-size:0.85rem;color:var(--slate-400);margin-top:8px}
+
+/* ---- ROI CALCULATOR ---- */
+.calc-wrap{display:grid;grid-template-columns:1fr;gap:24px;max-width:960px;margin:0 auto}
+@media(min-width:900px){.calc-wrap{grid-template-columns:1fr 1fr}}
+.calc-card{
+  padding:32px;border-radius:20px;background:rgba(17,24,39,0.5);
+  border:1px solid rgba(255,255,255,0.08);
+}
+.calc-field{margin-bottom:24px}
+.calc-field label{display:flex;justify-content:space-between;font-size:0.875rem;color:var(--slate-300);margin-bottom:10px;font-weight:500}
+.calc-field label b{color:var(--cyber-blue)}
+.calc-field input[type=range]{
+  width:100%;height:6px;border-radius:3px;-webkit-appearance:none;appearance:none;
+  background:linear-gradient(90deg,var(--cyber-blue),var(--cyber-purple));outline:none;
+}
+.calc-field input[type=range]::-webkit-slider-thumb{
+  -webkit-appearance:none;appearance:none;width:20px;height:20px;border-radius:50%;
+  background:#fff;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.3);border:3px solid var(--cyber-blue);
+}
+.calc-field input[type=range]::-moz-range-thumb{
+  width:18px;height:18px;border-radius:50%;background:#fff;cursor:pointer;border:3px solid var(--cyber-blue);
+}
+.calc-result{
+  padding:32px;border-radius:20px;display:flex;flex-direction:column;justify-content:center;
+  background:linear-gradient(135deg,rgba(6,182,212,0.12),rgba(139,92,246,0.12));
+  border:1px solid rgba(6,182,212,0.25);
+}
+.calc-result-item{margin-bottom:24px}
+.calc-result-item:last-child{margin-bottom:0}
+.calc-result-label{font-size:0.8rem;color:var(--slate-400);text-transform:uppercase;letter-spacing:0.05em}
+.calc-result-value{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:800;line-height:1.1;margin-top:4px}
+
+/* ---- INTEGRATIONS MARQUEE ---- */
+.marquee{overflow:hidden;position:relative;padding:16px 0;-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee-track{display:flex;gap:20px;width:max-content;animation:marqueeScroll 32s linear infinite}
+.marquee:hover .marquee-track{animation-play-state:paused}
+@keyframes marqueeScroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.integration-chip{
+  display:flex;align-items:center;gap:10px;padding:14px 22px;border-radius:12px;white-space:nowrap;
+  background:rgba(17,24,39,0.5);border:1px solid rgba(255,255,255,0.06);color:var(--slate-300);font-weight:600;font-size:0.95rem;
+}
+.integration-chip svg{width:22px;height:22px}
+body.light .integration-chip{background:#fff;border-color:rgba(0,0,0,0.08)}
+
+/* ---- FAQ ACCORDION ---- */
+.faq-list{max-width:768px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{border-radius:14px;background:rgba(17,24,39,0.4);border:1px solid rgba(255,255,255,0.06);overflow:hidden;transition:all 0.3s}
+.faq-item.open{border-color:rgba(6,182,212,0.3)}
+.faq-q{width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;text-align:left}
+.faq-q span{font-size:1rem;font-weight:600;color:#fff}
+.faq-q .faq-icon{flex-shrink:0;width:22px;height:22px;color:var(--cyber-blue);transition:transform 0.3s}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s ease;padding:0 24px}
+.faq-item.open .faq-a{max-height:300px;padding:0 24px 20px}
+.faq-a p{font-size:0.9rem;color:var(--slate-400);line-height:1.7}
+
+/* ---- BLOG / RESOURCES ---- */
+.blog-grid{display:grid;grid-template-columns:1fr;gap:24px}
+@media(min-width:640px){.blog-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:1024px){.blog-grid{grid-template-columns:repeat(3,1fr)}}
+.blog-card{
+  border-radius:16px;overflow:hidden;background:rgba(17,24,39,0.4);
+  border:1px solid rgba(255,255,255,0.06);transition:all 0.3s;cursor:pointer;display:flex;flex-direction:column;
+}
+.blog-card:hover{transform:translateY(-6px);border-color:rgba(6,182,212,0.3);box-shadow:0 20px 50px rgba(0,0,0,0.3)}
+.blog-thumb{height:160px;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+.blog-thumb svg{width:56px;height:56px;color:rgba(255,255,255,0.85);position:relative;z-index:2}
+.blog-body{padding:22px;flex:1;display:flex;flex-direction:column}
+.blog-tag{display:inline-block;font-size:0.7rem;font-weight:600;text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.blog-title{font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.4}
+body.light .blog-title{color:#0f172a}
+.blog-excerpt{font-size:0.85rem;color:var(--slate-400);line-height:1.6;flex:1}
+.blog-meta{display:flex;align-items:center;justify-content:space-between;margin-top:16px;font-size:0.75rem;color:var(--slate-500)}
+.blog-read{display:flex;align-items:center;gap:4px;color:var(--cyber-blue);font-weight:600}
+
+/* ---- COMPARISON TABLE ---- */
+.compare-card{border-radius:18px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);background:rgba(17,24,39,0.4);max-width:960px;margin:0 auto}
+.compare-table{width:100%;border-collapse:collapse}
+.compare-table th,.compare-table td{padding:16px 20px;text-align:left;font-size:0.9rem;border-bottom:1px solid rgba(255,255,255,0.05)}
+.compare-table thead th{color:#fff;font-weight:700;font-size:0.95rem}
+.compare-table thead th:not(:first-child){text-align:center}
+.compare-col-us{background:rgba(6,182,212,0.06)}
+.compare-table td:not(:first-child){text-align:center}
+.compare-table td{color:var(--slate-300)}
+.compare-yes{color:var(--cyber-green)}
+.compare-no{color:var(--slate-600)}
+body.light .compare-table thead th{color:#0f172a}
+
+/* ---- NEWSLETTER ---- */
+.newsletter-box{
+  max-width:680px;margin:0 auto;padding:40px;border-radius:20px;text-align:center;
+  background:linear-gradient(135deg,rgba(6,182,212,0.1),rgba(139,92,246,0.1));
+  border:1px solid rgba(255,255,255,0.08);
+}
+.newsletter-form{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:24px}
+.newsletter-form input{
+  flex:1;min-width:240px;padding:14px 18px;border-radius:12px;font-size:0.95rem;
+  background:rgba(10,14,26,0.5);border:1px solid rgba(255,255,255,0.1);color:#fff;outline:none;transition:border 0.2s;
+}
+.newsletter-form input:focus{border-color:var(--cyber-blue)}
+.newsletter-form input.error{border-color:var(--cyber-pink)}
+body.light .newsletter-form input{background:#fff;color:#0f172a}
+.newsletter-msg{font-size:0.85rem;margin-top:14px;min-height:20px}
+
+/* ---- TOAST ---- */
+#toast-container{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:300;display:flex;flex-direction:column;gap:10px;align-items:center;pointer-events:none}
+.toast{
+  display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:12px;font-size:0.875rem;font-weight:500;
+  background:rgba(17,24,39,0.95);backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.1);color:#fff;
+  box-shadow:0 10px 40px rgba(0,0,0,0.4);animation:toastIn 0.3s ease;max-width:90vw;
+}
+.toast svg{width:18px;height:18px;flex-shrink:0}
+.toast.success{border-color:rgba(16,185,129,0.4)}
+.toast.success svg{color:var(--cyber-green)}
+.toast.info{border-color:rgba(6,182,212,0.4)}
+.toast.info svg{color:var(--cyber-blue)}
+.toast.error{border-color:rgba(236,72,153,0.4)}
+.toast.error svg{color:var(--cyber-pink)}
+@keyframes toastIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes toastOut{to{opacity:0;transform:translateY(20px)}}
+
+/* ---- COOKIE CONSENT ---- */
+#cookie-banner{
+  position:fixed;bottom:0;left:0;right:0;z-index:150;padding:16px;
+  display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:16px;
+  background:rgba(10,14,26,0.96);backdrop-filter:blur(16px);border-top:1px solid rgba(255,255,255,0.08);
+  transform:translateY(100%);transition:transform 0.4s ease;
+}
+#cookie-banner.show{transform:translateY(0)}
+.cookie-text{font-size:0.85rem;color:var(--slate-400);max-width:560px}
+.cookie-text a{color:var(--cyber-blue)}
+.cookie-actions{display:flex;gap:10px}
+.cookie-btn{padding:9px 18px;border-radius:10px;font-size:0.85rem;font-weight:600;transition:all 0.2s}
+.cookie-btn.accept{background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));color:#fff}
+.cookie-btn.accept:hover{box-shadow:0 0 16px rgba(6,182,212,0.3)}
+.cookie-btn.decline{border:1px solid rgba(255,255,255,0.12);color:var(--slate-300)}
+.cookie-btn.decline:hover{background:rgba(255,255,255,0.05)}
+body.light #cookie-banner{background:rgba(255,255,255,0.97);border-color:rgba(0,0,0,0.08)}
+
+/* ---- COMMAND PALETTE ---- */
+#cmdk-overlay{
+  position:fixed;inset:0;z-index:400;background:rgba(0,0,0,0.6);backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding-top:14vh;
+}
+#cmdk-overlay.open{display:flex}
+.cmdk-panel{
+  width:100%;max-width:560px;border-radius:16px;overflow:hidden;
+  background:rgba(17,24,39,0.98);border:1px solid rgba(255,255,255,0.12);
+  box-shadow:0 30px 80px rgba(0,0,0,0.6);animation:scaleIn 0.2s ease;
+}
+.cmdk-search{display:flex;align-items:center;gap:12px;padding:18px 20px;border-bottom:1px solid rgba(255,255,255,0.07)}
+.cmdk-search svg{width:20px;height:20px;color:var(--slate-500)}
+.cmdk-search input{flex:1;background:transparent;border:none;outline:none;color:#fff;font-size:1rem}
+body.light .cmdk-search input{color:#0f172a}
+.cmdk-results{max-height:340px;overflow-y:auto;padding:8px}
+.cmdk-item{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:10px;cursor:pointer;transition:background 0.15s;
+}
+.cmdk-item.active,.cmdk-item:hover{background:rgba(6,182,212,0.12)}
+.cmdk-item-icon{width:34px;height:34px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0;background:rgba(255,255,255,0.06);color:var(--cyber-blue)}
+.cmdk-item-text{flex:1}
+.cmdk-item-title{font-size:0.9rem;color:#fff;font-weight:500}
+body.light .cmdk-item-title{color:#0f172a}
+.cmdk-item-sub{font-size:0.75rem;color:var(--slate-500)}
+.cmdk-empty{padding:32px;text-align:center;color:var(--slate-500);font-size:0.9rem}
+.cmdk-footer{display:flex;gap:16px;padding:12px 20px;border-top:1px solid rgba(255,255,255,0.07);font-size:0.7rem;color:var(--slate-500)}
+.cmdk-key{display:inline-block;padding:1px 6px;border-radius:4px;border:1px solid rgba(255,255,255,0.15);margin-right:4px}
+
+/* ---- CHAT WIDGET ---- */
+#chat-fab{
+  position:fixed;bottom:24px;left:24px;width:56px;height:56px;border-radius:50%;z-index:90;
+  background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));color:#fff;
+  display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(6,182,212,0.35);
+  transition:transform 0.3s;
+}
+#chat-fab:hover{transform:scale(1.08)}
+#chat-fab .chat-badge{position:absolute;top:-2px;right:-2px;width:16px;height:16px;border-radius:50%;background:var(--cyber-pink);border:2px solid var(--nexus-900);font-size:9px;display:flex;align-items:center;justify-content:center}
+#chat-panel{
+  position:fixed;bottom:92px;left:24px;width:340px;max-width:calc(100vw - 48px);z-index:95;
+  border-radius:18px;overflow:hidden;background:rgba(17,24,39,0.98);border:1px solid rgba(255,255,255,0.1);
+  box-shadow:0 30px 80px rgba(0,0,0,0.5);transform:translateY(20px) scale(0.95);opacity:0;visibility:hidden;
+  transition:all 0.3s;
+}
+#chat-panel.open{transform:translateY(0) scale(1);opacity:1;visibility:visible}
+.chat-head{padding:16px 18px;background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));display:flex;align-items:center;gap:12px}
+.chat-head-av{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,0.2);display:flex;align-items:center;justify-content:center}
+.chat-head h4{color:#fff;font-size:0.95rem;font-weight:700}
+.chat-head p{color:rgba(255,255,255,0.85);font-size:0.72rem;display:flex;align-items:center;gap:5px}
+.chat-head .dot{width:7px;height:7px;border-radius:50%;background:#4ade80}
+.chat-body{height:280px;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:10px;background:var(--nexus-900)}
+.chat-msg{max-width:82%;padding:10px 14px;border-radius:12px;font-size:0.85rem;line-height:1.5;animation:fadeInUp 0.3s ease}
+.chat-msg.bot{align-self:flex-start;background:rgba(255,255,255,0.06);color:var(--slate-300)}
+.chat-msg.me{align-self:flex-end;background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));color:#fff}
+.chat-quick{display:flex;flex-wrap:wrap;gap:6px;padding:0 16px 12px;background:var(--nexus-900)}
+.chat-chip{font-size:0.72rem;padding:6px 12px;border-radius:9999px;border:1px solid rgba(6,182,212,0.3);color:var(--cyber-blue);background:rgba(6,182,212,0.08);transition:all 0.2s}
+.chat-chip:hover{background:rgba(6,182,212,0.18)}
+.chat-input{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,0.07);background:var(--nexus-800)}
+.chat-input input{flex:1;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;color:#fff;outline:none;font-size:0.85rem}
+.chat-input button{width:40px;border-radius:10px;background:linear-gradient(135deg,var(--cyber-blue),var(--cyber-purple));color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ---- CONFETTI ---- */
+.confetti-piece{position:fixed;width:9px;height:9px;z-index:500;pointer-events:none;top:-10px;border-radius:2px}
+
+/* ---- SCROLLSPY ACTIVE NAV ---- */
+.nav-link.active-link{color:#fff;background:rgba(6,182,212,0.12)}
+body.light .nav-link.active-link{color:#0f172a;background:rgba(6,182,212,0.12)}
+
+/* ---- KEYBOARD FOCUS A11Y ---- */
+a:focus-visible,button:focus-visible,input:focus-visible{outline:2px solid var(--cyber-blue);outline-offset:2px}
 </style>
 </head>
 <body>
+
+<div id="scroll-progress"></div>
 
 <!-- ===== NAVBAR ===== -->
 <nav id="navbar">
@@ -584,10 +864,18 @@ input{font-family:inherit}
         <a href="#features" class="nav-link">Features</a>
         <a href="#how-it-works" class="nav-link">How It Works</a>
         <a href="#agents" class="nav-link">Agents</a>
+        <a href="#calculator" class="nav-link">ROI</a>
         <a href="#pricing" class="nav-link">Pricing</a>
-        <a href="#testimonials" class="nav-link">Testimonials</a>
+        <a href="#blog" class="nav-link">Blog</a>
+        <a href="#faq" class="nav-link">FAQ</a>
       </div>
       <div class="nav-cta">
+        <button class="nav-icon-btn" id="cmdk-open" aria-label="Search" title="Search (⌘K)">
+          <svg class="icon-sm" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <button class="nav-icon-btn" id="theme-toggle" aria-label="Toggle theme" title="Toggle theme">
+          <svg class="icon-sm" id="theme-icon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
         <a href="#pricing" class="nav-cta-signin">Sign In</a>
         <a href="#pricing" class="nav-cta-btn">Get Started Free</a>
       </div>
@@ -600,8 +888,12 @@ input{font-family:inherit}
     <a href="#features">Features</a>
     <a href="#how-it-works">How It Works</a>
     <a href="#agents">Agents</a>
+    <a href="#calculator">ROI Calculator</a>
     <a href="#pricing">Pricing</a>
     <a href="#testimonials">Testimonials</a>
+    <a href="#blog">Blog</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" id="mobile-theme-toggle">🌓 Toggle Theme</a>
     <a href="#pricing" class="mobile-cta">Get Started Free</a>
   </div>
 </nav>
@@ -652,6 +944,18 @@ input{font-family:inherit}
     </div>
   </div>
   <div class="hero-bottom-fade"></div>
+</section>
+
+<!-- ===== STATS / IMPACT ===== -->
+<section id="impact" class="section" style="padding-top:48px">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <div class="badge badge-blue">By the Numbers</div>
+      <h2 class="section-title" style="margin-top:16px">Real Impact, <span class="grad-text-blue-purple">Real Numbers</span></h2>
+      <p class="section-desc">Teams using NexusAI agents see measurable results from day one.</p>
+    </div>
+    <div class="stats-grid" id="stats-grid"></div>
+  </div>
 </section>
 
 <!-- ===== FEATURES ===== -->
@@ -769,6 +1073,68 @@ input{font-family:inherit}
   </div>
 </section>
 
+<!-- ===== INTEGRATIONS MARQUEE ===== -->
+<section id="integrations" class="section" style="padding-top:64px;padding-bottom:64px">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:40px">
+      <div class="badge badge-purple">Integrations</div>
+      <h2 class="section-title" style="margin-top:16px">Connects to <span class="grad-text-blue-purple">Everything</span></h2>
+      <p class="section-desc">Plug your agents into the tools your team already uses. 100+ native integrations.</p>
+    </div>
+  </div>
+  <div class="marquee"><div class="marquee-track" id="marquee-1"></div></div>
+  <div class="marquee" style="margin-top:8px"><div class="marquee-track" id="marquee-2"></div></div>
+</section>
+
+<!-- ===== ROI CALCULATOR ===== -->
+<section id="calculator" class="section">
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:rgba(16,185,129,0.05);filter:blur(100px);pointer-events:none"></div>
+  <div class="container relative">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <div class="badge badge-green">ROI Calculator</div>
+      <h2 class="section-title" style="margin-top:16px">Calculate Your <span class="grad-text-green-blue">Time & Cost Savings</span></h2>
+      <p class="section-desc">See how much your team could save by deploying autonomous agents. Drag the sliders.</p>
+    </div>
+    <div class="calc-wrap reveal">
+      <div class="calc-card">
+        <div class="calc-field">
+          <label>Team size <b id="calc-team-val">10</b></label>
+          <input type="range" id="calc-team" min="1" max="500" value="10">
+        </div>
+        <div class="calc-field">
+          <label>Avg. hourly cost (USD) <b id="calc-rate-val">$50</b></label>
+          <input type="range" id="calc-rate" min="15" max="200" value="50">
+        </div>
+        <div class="calc-field">
+          <label>Hours/week on repetitive tasks <b id="calc-hours-val">12</b></label>
+          <input type="range" id="calc-hours" min="1" max="40" value="12">
+        </div>
+        <div class="calc-field" style="margin-bottom:0">
+          <label>Automation rate <b id="calc-auto-val">65%</b></label>
+          <input type="range" id="calc-auto" min="10" max="95" value="65">
+        </div>
+      </div>
+      <div class="calc-result">
+        <div class="calc-result-item">
+          <div class="calc-result-label">Hours saved / month</div>
+          <div class="calc-result-value grad-text-green-blue" id="calc-hours-saved">0</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">Estimated monthly savings</div>
+          <div class="calc-result-value grad-text-blue-purple" id="calc-money-saved">$0</div>
+        </div>
+        <div class="calc-result-item">
+          <div class="calc-result-label">Annual savings</div>
+          <div class="calc-result-value grad-text-amber-blue" id="calc-annual-saved">$0</div>
+        </div>
+        <a href="#pricing" class="btn-primary" style="justify-content:center">Start Saving Today
+          <svg class="icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ===== PRICING ===== -->
 <section id="pricing" class="section">
   <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;border-radius:50%;background:rgba(6,182,212,0.05);filter:blur(100px);pointer-events:none"></div>
@@ -808,6 +1174,70 @@ input{font-family:inherit}
         <div class="logo-text">AeroLogic</div>
         <div class="logo-text">FinanceAI</div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPARISON ===== -->
+<section id="compare" class="section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <div class="badge badge-blue">Why NexusAI</div>
+      <h2 class="section-title" style="margin-top:16px">How We <span class="grad-text-blue-pink">Compare</span></h2>
+      <p class="section-desc">See why teams choose NexusAI over building in-house or using generic tools.</p>
+    </div>
+    <div class="compare-card reveal">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th>Capability</th>
+            <th class="compare-col-us">NexusAI</th>
+            <th>Generic LLM</th>
+            <th>In-House Build</th>
+          </tr>
+        </thead>
+        <tbody id="compare-body"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG / RESOURCES ===== -->
+<section id="blog" class="section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <div class="badge badge-purple">From the Blog</div>
+      <h2 class="section-title" style="margin-top:16px">Insights & <span class="grad-text-pink-purple">Resources</span></h2>
+      <p class="section-desc">Guides, deep-dives, and best practices for building with autonomous agents.</p>
+    </div>
+    <div class="blog-grid" id="blog-grid"></div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq" class="section">
+  <div class="container">
+    <div class="text-center reveal" style="margin-bottom:48px">
+      <div class="badge badge-amber">FAQ</div>
+      <h2 class="section-title" style="margin-top:16px">Frequently Asked <span class="grad-text-amber-blue">Questions</span></h2>
+      <p class="section-desc">Everything you need to know. Can't find an answer? Use the chat widget.</p>
+    </div>
+    <div class="faq-list" id="faq-list"></div>
+  </div>
+</section>
+
+<!-- ===== NEWSLETTER ===== -->
+<section id="newsletter" class="section" style="padding-top:32px">
+  <div class="container">
+    <div class="newsletter-box reveal">
+      <div class="badge badge-green" style="margin-bottom:8px">Stay in the loop</div>
+      <h2 class="section-title" style="font-size:clamp(1.5rem,4vw,2.2rem)">Join 25,000+ builders</h2>
+      <p class="section-desc">Get the latest on agentic AI, product updates, and tutorials. No spam, unsubscribe anytime.</p>
+      <form class="newsletter-form" id="newsletter-form" novalidate>
+        <input type="email" id="newsletter-email" placeholder="you@company.com" aria-label="Email address">
+        <button type="submit" class="btn-primary">Subscribe</button>
+      </form>
+      <div class="newsletter-msg" id="newsletter-msg"></div>
     </div>
   </div>
 </section>
@@ -884,6 +1314,67 @@ input{font-family:inherit}
     </div>
   </div>
 </footer>
+
+<!-- ===== FLOATING UI ===== -->
+<button id="back-to-top" aria-label="Back to top">
+  <svg class="icon" viewBox="0 0 24 24"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+</button>
+
+<!-- Chat Widget -->
+<button id="chat-fab" aria-label="Open chat">
+  <span class="chat-badge">1</span>
+  <svg class="icon-lg" id="chat-fab-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+</button>
+<div id="chat-panel" role="dialog" aria-label="Chat with NexusAI">
+  <div class="chat-head">
+    <div class="chat-head-av">
+      <svg style="width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 2a4 4 0 0 0-4 4v5h8V6a4 4 0 0 0-4-4z"/><circle cx="12" cy="16" r="1"/></svg>
+    </div>
+    <div style="flex:1">
+      <h4>Nexie · AI Assistant</h4>
+      <p><span class="dot"></span> Online · replies instantly</p>
+    </div>
+    <button id="chat-close" style="color:#fff" aria-label="Close chat">
+      <svg class="icon" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+  </div>
+  <div class="chat-body" id="chat-body"></div>
+  <div class="chat-quick" id="chat-quick"></div>
+  <form class="chat-input" id="chat-form">
+    <input type="text" id="chat-text" placeholder="Ask me anything..." autocomplete="off">
+    <button type="submit" aria-label="Send">
+      <svg class="icon-sm" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+    </button>
+  </form>
+</div>
+
+<!-- Command Palette -->
+<div id="cmdk-overlay" role="dialog" aria-label="Command palette">
+  <div class="cmdk-panel">
+    <div class="cmdk-search">
+      <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input type="text" id="cmdk-input" placeholder="Search sections, actions...">
+    </div>
+    <div class="cmdk-results" id="cmdk-results"></div>
+    <div class="cmdk-footer">
+      <span><span class="cmdk-key">↑↓</span>navigate</span>
+      <span><span class="cmdk-key">↵</span>select</span>
+      <span><span class="cmdk-key">esc</span>close</span>
+    </div>
+  </div>
+</div>
+
+<!-- Cookie Banner -->
+<div id="cookie-banner">
+  <p class="cookie-text">🍪 We use cookies to enhance your experience and analyze site traffic. See our <a href="#">Cookie Policy</a>.</p>
+  <div class="cookie-actions">
+    <button class="cookie-btn decline" id="cookie-decline">Decline</button>
+    <button class="cookie-btn accept" id="cookie-accept">Accept All</button>
+  </div>
+</div>
+
+<!-- Toast Container -->
+<div id="toast-container"></div>
 
 <!-- ================================================================
      JAVASCRIPT
@@ -1307,10 +1798,439 @@ input{font-family:inherit}
     });
   });
 
+  // ============================================================
+  // ===== NEW FEATURES JS =====
+  // ============================================================
+
+  // ----- TOAST SYSTEM -----
+  const toastContainer = document.getElementById('toast-container');
+  function toast(msg, type = 'info', duration = 3200) {
+    const t = document.createElement('div');
+    t.className = 'toast ' + type;
+    const icons = {
+      success: '<polyline points="20 6 9 17 4 12"/>',
+      info: '<circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/>',
+      error: '<circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/>'
+    };
+    t.innerHTML = `<svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${icons[type]||icons.info}</svg><span>${msg}</span>`;
+    toastContainer.appendChild(t);
+    setTimeout(() => { t.style.animation = 'toastOut 0.3s ease forwards'; setTimeout(() => t.remove(), 300); }, duration);
+  }
+
+  // ----- SCROLL PROGRESS BAR -----
+  const scrollProgress = document.getElementById('scroll-progress');
+  function updateScrollProgress() {
+    const h = document.documentElement;
+    const scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    scrollProgress.style.width = scrolled + '%';
+  }
+  window.addEventListener('scroll', updateScrollProgress);
+  updateScrollProgress();
+
+  // ----- BACK TO TOP -----
+  const backToTop = document.getElementById('back-to-top');
+  window.addEventListener('scroll', () => {
+    backToTop.classList.toggle('show', window.scrollY > 600);
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // ----- THEME TOGGLE -----
+  const themeToggle = document.getElementById('theme-toggle');
+  const themeIcon = document.getElementById('theme-icon');
+  const sunIcon = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
+  const moonIcon = '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>';
+  function applyTheme(light) {
+    document.body.classList.toggle('light', light);
+    themeIcon.innerHTML = light ? sunIcon : moonIcon;
+    try { localStorage.setItem('nexus-theme', light ? 'light' : 'dark'); } catch(e){}
+  }
+  function toggleTheme() { applyTheme(!document.body.classList.contains('light')); }
+  themeToggle.addEventListener('click', toggleTheme);
+  const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+  if (mobileThemeToggle) mobileThemeToggle.addEventListener('click', (e) => { e.preventDefault(); toggleTheme(); });
+  try {
+    const saved = localStorage.getItem('nexus-theme');
+    if (saved === 'light') applyTheme(true);
+  } catch(e){}
+
+  // ----- ANIMATED COUNTERS (STATS) -----
+  const statsData = [
+    { value: 50000, suffix: '+', label: 'Active Agents Deployed', color: 'var(--cyber-blue)' },
+    { value: 10, suffix: 'M+', label: 'Tasks Completed', color: 'var(--cyber-purple)' },
+    { value: 70, suffix: '%', label: 'Avg. Time Saved', color: 'var(--cyber-green)' },
+    { value: 99.9, suffix: '%', label: 'Uptime SLA', color: 'var(--cyber-pink)', decimals: 1 },
+  ];
+  const statsGrid = document.getElementById('stats-grid');
+  statsData.forEach((s, i) => {
+    const box = document.createElement('div');
+    box.className = 'stat-box reveal';
+    box.style.transitionDelay = (i * 0.08) + 's';
+    box.innerHTML = `<div class="stat-num" data-target="${s.value}" data-suffix="${s.suffix}" data-decimals="${s.decimals||0}" style="color:${s.color}">0</div><div class="stat-label">${s.label}</div>`;
+    statsGrid.appendChild(box);
+  });
+  function animateCounter(el) {
+    const target = parseFloat(el.dataset.target);
+    const decimals = parseInt(el.dataset.decimals);
+    const suffix = el.dataset.suffix;
+    const dur = 1600; const start = performance.now();
+    function tick(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      const val = target * eased;
+      el.textContent = (decimals ? val.toFixed(decimals) : Math.floor(val).toLocaleString()) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+      else el.textContent = (decimals ? target.toFixed(decimals) : target.toLocaleString()) + suffix;
+    }
+    requestAnimationFrame(tick);
+  }
+  const statsObs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { animateCounter(e.target); statsObs.unobserve(e.target); } });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.stat-num').forEach(el => statsObs.observe(el));
+
+  // ----- INTEGRATIONS MARQUEE -----
+  const integrations = [
+    { name:'Slack', icon:'<rect x="3" y="3" width="18" height="18" rx="4"/>', c:'#e01e5a' },
+    { name:'GitHub', icon:'<path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>', c:'#fff' },
+    { name:'Notion', icon:'<path d="M4 4h16v16H4z"/><path d="M8 8v8l8-8v8"/>', c:'#fff' },
+    { name:'Salesforce', icon:'<path d="M17.5 19a4.5 4.5 0 1 0 0-9 5.5 5.5 0 0 0-10.6-2A4 4 0 0 0 5 19z"/>', c:'#00a1e0' },
+    { name:'Jira', icon:'<rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 2a4 4 0 0 0-4 4v5h8V6a4 4 0 0 0-4-4z"/>', c:'#2684ff' },
+    { name:'PostgreSQL', icon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>', c:'#336791' },
+    { name:'AWS', icon:'<path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/>', c:'#ff9900' },
+    { name:'Google', icon:'<circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/>', c:'#4285f4' },
+    { name:'Stripe', icon:'<rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/>', c:'#635bff' },
+    { name:'Zapier', icon:'<line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/>', c:'#ff4f00' },
+    { name:'Discord', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', c:'#5865f2' },
+    { name:'Figma', icon:'<circle cx="12" cy="9" r="3"/><path d="M9 6a3 3 0 0 0 0 6M15 6a3 3 0 0 1 0 6M9 12a3 3 0 1 0 3 3v-3z"/>', c:'#f24e1e' },
+  ];
+  function buildMarquee(elId) {
+    const el = document.getElementById(elId);
+    const doubled = [...integrations, ...integrations];
+    el.innerHTML = doubled.map(it => `<div class="integration-chip"><svg viewBox="0 0 24 24" style="fill:none;stroke:${it.c};stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${it.icon}</svg>${it.name}</div>`).join('');
+  }
+  buildMarquee('marquee-1');
+  // reverse second row order for variety
+  (function(){
+    const el = document.getElementById('marquee-2');
+    const rev = [...integrations].reverse();
+    const doubled = [...rev, ...rev];
+    el.innerHTML = doubled.map(it => `<div class="integration-chip"><svg viewBox="0 0 24 24" style="fill:none;stroke:${it.c};stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${it.icon}</svg>${it.name}</div>`).join('');
+    el.style.animationDirection = 'reverse';
+  })();
+
+  // ----- ROI CALCULATOR -----
+  const calc = {
+    team: document.getElementById('calc-team'),
+    rate: document.getElementById('calc-rate'),
+    hours: document.getElementById('calc-hours'),
+    auto: document.getElementById('calc-auto'),
+  };
+  function fmtMoney(n) {
+    if (n >= 1000000) return '$' + (n/1000000).toFixed(2) + 'M';
+    if (n >= 1000) return '$' + (n/1000).toFixed(1) + 'K';
+    return '$' + Math.round(n).toLocaleString();
+  }
+  function updateCalc() {
+    const team = +calc.team.value, rate = +calc.rate.value, hours = +calc.hours.value, auto = +calc.auto.value / 100;
+    document.getElementById('calc-team-val').textContent = team;
+    document.getElementById('calc-rate-val').textContent = '$' + rate;
+    document.getElementById('calc-hours-val').textContent = hours;
+    document.getElementById('calc-auto-val').textContent = Math.round(auto*100) + '%';
+    const weeklyHoursSaved = team * hours * auto;
+    const monthlyHoursSaved = weeklyHoursSaved * 4.33;
+    const monthlyMoney = monthlyHoursSaved * rate;
+    document.getElementById('calc-hours-saved').textContent = Math.round(monthlyHoursSaved).toLocaleString() + ' hrs';
+    document.getElementById('calc-money-saved').textContent = fmtMoney(monthlyMoney);
+    document.getElementById('calc-annual-saved').textContent = fmtMoney(monthlyMoney * 12);
+  }
+  Object.values(calc).forEach(input => input.addEventListener('input', updateCalc));
+  updateCalc();
+
+  // ----- COMPARISON TABLE -----
+  const compareRows = [
+    ['Autonomous multi-step execution', true, false, 'partial'],
+    ['Pre-built specialized agents', true, false, false],
+    ['Multi-agent orchestration', true, false, 'partial'],
+    ['Persistent long-term memory', true, false, 'partial'],
+    ['Built-in safety guardrails', true, 'partial', false],
+    ['100+ native integrations', true, false, false],
+    ['Real-time monitoring & traces', true, false, 'partial'],
+    ['Deploy in minutes', true, true, false],
+    ['SOC 2 & HIPAA compliance', true, false, 'partial'],
+  ];
+  const yes = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:var(--cyber-green);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><polyline points="20 6 9 17 4 12"/></svg>';
+  const no = '<svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:var(--slate-600);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>';
+  const partial = '<span style="color:var(--slate-500);font-size:0.78rem">Limited</span>';
+  function cell(v) { return v === true ? yes : v === false ? no : partial; }
+  const compareBody = document.getElementById('compare-body');
+  compareRows.forEach(r => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="color:var(--slate-300);font-weight:500">${r[0]}</td><td class="compare-col-us">${cell(r[1])}</td><td>${cell(r[2])}</td><td>${cell(r[3])}</td>`;
+    compareBody.appendChild(tr);
+  });
+
+  // ----- BLOG -----
+  const blogPosts = [
+    { tag:'Tutorial', tagColor:'var(--cyber-blue)', grad:'linear-gradient(135deg,#06b6d4,#3b82f6)', icon:'<polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>', title:'Building Your First Autonomous Agent in 10 Minutes', excerpt:'A step-by-step walkthrough of creating, configuring, and deploying your first agent with NexusAI.', author:'Sarah Chen', date:'Jun 2, 2026', read:'8 min' },
+    { tag:'Deep Dive', tagColor:'var(--cyber-purple)', grad:'linear-gradient(135deg,#8b5cf6,#ec4899)', icon:'<path d="M12 2a7 7 0 0 1 7 7c0 3-2 5.5-4 7.5L12 22l-3-5.5C7 14.5 5 12 5 9a7 7 0 0 1 7-7z"/><circle cx="12" cy="9" r="2"/>', title:'How Multi-Agent Orchestration Actually Works', excerpt:'An inside look at how teams of specialized agents coordinate, delegate, and solve complex problems together.', author:'Marcus Johnson', date:'May 28, 2026', read:'12 min' },
+    { tag:'Best Practices', tagColor:'var(--cyber-green)', grad:'linear-gradient(135deg,#10b981,#06b6d4)', icon:'<path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>', title:'5 Safety Guardrails Every Production Agent Needs', excerpt:'Learn the essential safety patterns to keep your autonomous agents reliable, predictable, and secure.', author:'Elena Rodriguez', date:'May 21, 2026', read:'6 min' },
+    { tag:'Case Study', tagColor:'var(--cyber-pink)', grad:'linear-gradient(135deg,#ec4899,#f43f5e)', icon:'<line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>', title:'How ScaleUp Cut Support Time by 70% with Agents', excerpt:'A real-world breakdown of deploying support agents at scale and the measurable impact on the bottom line.', author:'James Park', date:'May 14, 2026', read:'10 min' },
+    { tag:'Product', tagColor:'#fbbf24', grad:'linear-gradient(135deg,#fbbf24,#f97316)', icon:'<path d="M12 3l1.5 4.5H18l-3.7 2.7L15.8 15 12 12.2 8.2 15l1.5-4.8L6 7.5h4.5z"/>', title:'Announcing NexusAI v2.0: Smarter, Faster, Safer', excerpt:'Our biggest release yet — new reasoning engine, 50+ integrations, and a redesigned agent console.', author:'Product Team', date:'May 7, 2026', read:'5 min' },
+    { tag:'Research', tagColor:'#818cf8', grad:'linear-gradient(135deg,#818cf8,#8b5cf6)', icon:'<ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>', title:'The Science Behind Persistent Agent Memory', excerpt:'How we built memory systems that let agents learn from every interaction and get smarter over time.', author:'Aisha Patel', date:'Apr 30, 2026', read:'14 min' },
+  ];
+  const blogGrid = document.getElementById('blog-grid');
+  blogPosts.forEach((p, i) => {
+    const card = document.createElement('article');
+    card.className = 'blog-card reveal';
+    card.style.transitionDelay = (i * 0.07) + 's';
+    card.innerHTML = `
+      <div class="blog-thumb" style="background:${p.grad}">
+        <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(10,14,26,0.4),transparent)"></div>
+        <svg viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round">${p.icon}</svg>
+      </div>
+      <div class="blog-body">
+        <span class="blog-tag" style="color:${p.tagColor}">${p.tag}</span>
+        <h3 class="blog-title">${p.title}</h3>
+        <p class="blog-excerpt">${p.excerpt}</p>
+        <div class="blog-meta">
+          <span>${p.author} · ${p.date}</span>
+          <span class="blog-read">${p.read} read</span>
+        </div>
+      </div>`;
+    card.addEventListener('click', () => toast('📖 Opening "' + p.title + '"', 'info'));
+    blogGrid.appendChild(card);
+  });
+
+  // ----- FAQ ACCORDION -----
+  const faqs = [
+    { q:'Do I need to know how to code to use NexusAI?', a:'Not at all. You can instruct agents entirely in plain English. For advanced use cases, we also offer a full API and SDK, but the core platform is designed for non-technical users.' },
+    { q:'How is my data kept secure?', a:'All data is encrypted in transit and at rest. We are SOC 2 Type II certified and HIPAA compliant. Enterprise customers can also deploy on-premise or in their own private cloud for complete data control.' },
+    { q:'Can agents access my existing tools and databases?', a:'Yes. NexusAI offers 100+ native integrations including Slack, GitHub, Salesforce, PostgreSQL, AWS, and more. You can also connect any custom tool via our API or webhooks.' },
+    { q:'What happens if an agent makes a mistake?', a:'Every agent runs within configurable safety guardrails with human-in-the-loop oversight. You can require approval for sensitive actions, set spending limits, and review full execution traces of everything an agent does.' },
+    { q:'Is there a free plan?', a:'Yes! Our Starter plan is free forever and includes 3 active agents and 1,000 tasks per month — no credit card required. Perfect for individuals and small projects.' },
+    { q:'How long does it take to deploy an agent?', a:'Most users deploy their first working agent in under 10 minutes. Pre-built agent templates let you get started instantly, and you can customize from there.' },
+    { q:'Can I cancel my subscription anytime?', a:'Absolutely. There are no long-term contracts on our self-serve plans. You can upgrade, downgrade, or cancel at any time directly from your dashboard.' },
+  ];
+  const faqList = document.getElementById('faq-list');
+  faqs.forEach((f, i) => {
+    const item = document.createElement('div');
+    item.className = 'faq-item reveal';
+    item.style.transitionDelay = (i * 0.05) + 's';
+    item.innerHTML = `
+      <button class="faq-q" aria-expanded="false">
+        <span>${f.q}</span>
+        <svg class="faq-icon" viewBox="0 0 24 24" style="fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="faq-a"><p>${f.a}</p></div>`;
+    const btn = item.querySelector('.faq-q');
+    btn.addEventListener('click', () => {
+      const isOpen = item.classList.contains('open');
+      faqList.querySelectorAll('.faq-item').forEach(it => { it.classList.remove('open'); it.querySelector('.faq-q').setAttribute('aria-expanded','false'); });
+      if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded','true'); }
+    });
+    faqList.appendChild(item);
+  });
+
+  // ----- NEWSLETTER -----
+  const newsletterForm = document.getElementById('newsletter-form');
+  const newsletterEmail = document.getElementById('newsletter-email');
+  const newsletterMsg = document.getElementById('newsletter-msg');
+  newsletterForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = newsletterEmail.value.trim();
+    const valid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val);
+    if (!valid) {
+      newsletterEmail.classList.add('error');
+      newsletterMsg.style.color = 'var(--cyber-pink)';
+      newsletterMsg.textContent = 'Please enter a valid email address.';
+      return;
+    }
+    newsletterEmail.classList.remove('error');
+    newsletterMsg.style.color = 'var(--cyber-green)';
+    newsletterMsg.textContent = '🎉 You\'re subscribed! Check your inbox to confirm.';
+    newsletterEmail.value = '';
+    toast('Subscribed successfully!', 'success');
+    fireConfetti();
+  });
+
+  // ----- CONFETTI -----
+  function fireConfetti() {
+    const colors = ['#06b6d4','#8b5cf6','#ec4899','#10b981','#fbbf24'];
+    for (let i = 0; i < 80; i++) {
+      const c = document.createElement('div');
+      c.className = 'confetti-piece';
+      c.style.left = Math.random() * 100 + 'vw';
+      c.style.background = colors[Math.floor(Math.random()*colors.length)];
+      c.style.transform = `rotate(${Math.random()*360}deg)`;
+      if (Math.random() > 0.5) c.style.borderRadius = '50%';
+      document.body.appendChild(c);
+      const fall = 100 + Math.random() * 50;
+      const drift = (Math.random() - 0.5) * 200;
+      const dur = 2000 + Math.random() * 1500;
+      c.animate([
+        { transform: `translate(0,0) rotate(0deg)`, opacity: 1 },
+        { transform: `translate(${drift}px, ${fall}vh) rotate(${Math.random()*720}deg)`, opacity: 0 }
+      ], { duration: dur, easing: 'cubic-bezier(0.2,0.6,0.4,1)' });
+      setTimeout(() => c.remove(), dur);
+    }
+  }
+
+  // ----- COOKIE BANNER -----
+  const cookieBanner = document.getElementById('cookie-banner');
+  function showCookie() {
+    try { if (!localStorage.getItem('nexus-cookie')) setTimeout(() => cookieBanner.classList.add('show'), 1500); }
+    catch(e) { setTimeout(() => cookieBanner.classList.add('show'), 1500); }
+  }
+  function dismissCookie(choice) {
+    cookieBanner.classList.remove('show');
+    try { localStorage.setItem('nexus-cookie', choice); } catch(e){}
+    toast(choice === 'accept' ? 'Cookie preferences saved.' : 'Only essential cookies will be used.', 'info');
+  }
+  document.getElementById('cookie-accept').addEventListener('click', () => dismissCookie('accept'));
+  document.getElementById('cookie-decline').addEventListener('click', () => dismissCookie('decline'));
+  showCookie();
+
+  // ----- COMMAND PALETTE -----
+  const cmdkOverlay = document.getElementById('cmdk-overlay');
+  const cmdkInput = document.getElementById('cmdk-input');
+  const cmdkResults = document.getElementById('cmdk-results');
+  const cmdkCommands = [
+    { title:'Go to Features', sub:'Section', icon:'<polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>', action:() => scrollToId('#features') },
+    { title:'How It Works', sub:'Section', icon:'<circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>', action:() => scrollToId('#how-it-works') },
+    { title:'Browse Agents', sub:'Section', icon:'<rect x="3" y="11" width="18" height="10" rx="2"/><path d="M12 2a4 4 0 0 0-4 4v5h8V6a4 4 0 0 0-4-4z"/>', action:() => scrollToId('#agents') },
+    { title:'ROI Calculator', sub:'Section', icon:'<rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/>', action:() => scrollToId('#calculator') },
+    { title:'View Pricing', sub:'Section', icon:'<line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>', action:() => scrollToId('#pricing') },
+    { title:'Read the Blog', sub:'Section', icon:'<path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>', action:() => scrollToId('#blog') },
+    { title:'FAQ', sub:'Section', icon:'<circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>', action:() => scrollToId('#faq') },
+    { title:'Toggle Theme', sub:'Action · Switch light/dark', icon:'<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>', action:() => toggleTheme() },
+    { title:'Open Live Chat', sub:'Action', icon:'<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>', action:() => openChat() },
+    { title:'Start Free Trial', sub:'Action', icon:'<polyline points="5 3 19 12 5 21 5 3"/>', action:() => scrollToId('#pricing') },
+    { title:'Subscribe to Newsletter', sub:'Action', icon:'<path d="M4 4h16v16H4z"/><polyline points="22 6 12 13 2 6"/>', action:() => scrollToId('#newsletter') },
+  ];
+  let cmdkActive = 0, cmdkFiltered = cmdkCommands.slice();
+  function scrollToId(id) { const t = document.querySelector(id); if (t) t.scrollIntoView({ behavior:'smooth' }); closeCmdk(); }
+  function renderCmdk() {
+    cmdkResults.innerHTML = '';
+    if (cmdkFiltered.length === 0) { cmdkResults.innerHTML = '<div class="cmdk-empty">No results found</div>'; return; }
+    cmdkFiltered.forEach((c, i) => {
+      const div = document.createElement('div');
+      div.className = 'cmdk-item' + (i === cmdkActive ? ' active' : '');
+      div.innerHTML = `<div class="cmdk-item-icon"><svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round">${c.icon}</svg></div><div class="cmdk-item-text"><div class="cmdk-item-title">${c.title}</div><div class="cmdk-item-sub">${c.sub}</div></div>`;
+      div.addEventListener('click', () => c.action());
+      div.addEventListener('mouseenter', () => { cmdkActive = i; renderCmdk(); });
+      cmdkResults.appendChild(div);
+    });
+  }
+  function openCmdk() { cmdkOverlay.classList.add('open'); cmdkInput.value=''; cmdkFiltered = cmdkCommands.slice(); cmdkActive = 0; renderCmdk(); setTimeout(() => cmdkInput.focus(), 50); }
+  function closeCmdk() { cmdkOverlay.classList.remove('open'); }
+  document.getElementById('cmdk-open').addEventListener('click', openCmdk);
+  cmdkOverlay.addEventListener('click', (e) => { if (e.target === cmdkOverlay) closeCmdk(); });
+  cmdkInput.addEventListener('input', () => {
+    const q = cmdkInput.value.toLowerCase();
+    cmdkFiltered = cmdkCommands.filter(c => c.title.toLowerCase().includes(q) || c.sub.toLowerCase().includes(q));
+    cmdkActive = 0; renderCmdk();
+  });
+  cmdkInput.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowDown') { e.preventDefault(); cmdkActive = Math.min(cmdkActive+1, cmdkFiltered.length-1); renderCmdk(); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); cmdkActive = Math.max(cmdkActive-1, 0); renderCmdk(); }
+    else if (e.key === 'Enter') { e.preventDefault(); if (cmdkFiltered[cmdkActive]) cmdkFiltered[cmdkActive].action(); }
+  });
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); cmdkOverlay.classList.contains('open') ? closeCmdk() : openCmdk(); }
+    else if (e.key === 'Escape') { closeCmdk(); }
+    else if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') { e.preventDefault(); openCmdk(); }
+  });
+
+  // ----- CHAT WIDGET -----
+  const chatFab = document.getElementById('chat-fab');
+  const chatPanel = document.getElementById('chat-panel');
+  const chatClose = document.getElementById('chat-close');
+  const chatBody = document.getElementById('chat-body');
+  const chatForm = document.getElementById('chat-form');
+  const chatText = document.getElementById('chat-text');
+  const chatQuick = document.getElementById('chat-quick');
+  let chatOpened = false;
+  const chatReplies = [
+    { kw:['price','pricing','cost','plan'], a:'We offer a free Starter plan, Pro at $39/mo (billed annually), and custom Enterprise pricing. Want me to take you to the pricing section?' },
+    { kw:['agent','agents'], a:'We have pre-built agents for Research, Coding, Data, Support, and Creative tasks — plus you can build your own! Check out the Agents section. 🤖' },
+    { kw:['free','trial','demo'], a:'Yes! Our Starter plan is free forever with 3 agents and 1,000 tasks/month — no credit card needed. You can also try the live demo on this page.' },
+    { kw:['secure','security','privacy','data'], a:'Security is our priority — we are SOC 2 Type II certified, HIPAA compliant, and offer on-premise deployment for enterprise. 🔒' },
+    { kw:['integrate','integration','connect','slack','github'], a:'We support 100+ integrations including Slack, GitHub, Salesforce, AWS, and more. Anything custom can connect via our API!' },
+    { kw:['hello','hi','hey'], a:'Hey there! 👋 I\'m Nexie. Ask me anything about NexusAI — pricing, agents, security, or integrations!' },
+  ];
+  const chatQuickQuestions = ['How much does it cost?', 'Is there a free plan?', 'How secure is it?', 'What agents are available?'];
+  function addChatMsg(text, who) {
+    const m = document.createElement('div');
+    m.className = 'chat-msg ' + who;
+    m.textContent = text;
+    chatBody.appendChild(m);
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }
+  function botReply(userText) {
+    const lower = userText.toLowerCase();
+    let reply = "Great question! Our team can help with that. In the meantime, feel free to explore the page or start a free trial. Is there anything else I can help with?";
+    for (const r of chatReplies) { if (r.kw.some(k => lower.includes(k))) { reply = r.a; break; } }
+    setTimeout(() => addChatMsg(reply, 'bot'), 700);
+  }
+  function openChat() {
+    chatPanel.classList.add('open');
+    chatFab.querySelector('.chat-badge').style.display = 'none';
+    if (!chatOpened) {
+      chatOpened = true;
+      addChatMsg('Hi! 👋 I\'m Nexie, your AI assistant. How can I help you today?', 'bot');
+      chatQuickQuestions.forEach(q => {
+        const chip = document.createElement('button');
+        chip.className = 'chat-chip'; chip.textContent = q;
+        chip.addEventListener('click', () => { addChatMsg(q, 'me'); botReply(q); chatQuick.style.display='none'; });
+        chatQuick.appendChild(chip);
+      });
+    }
+    setTimeout(() => chatText.focus(), 300);
+  }
+  function closeChat() { chatPanel.classList.remove('open'); }
+  chatFab.addEventListener('click', () => chatPanel.classList.contains('open') ? closeChat() : openChat());
+  chatClose.addEventListener('click', closeChat);
+  chatForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const val = chatText.value.trim();
+    if (!val) return;
+    addChatMsg(val, 'me'); chatText.value = ''; chatQuick.style.display='none'; botReply(val);
+  });
+
+  // ----- SCROLLSPY ACTIVE NAV -----
+  const spySections = ['features','how-it-works','agents','calculator','pricing','blog','faq'];
+  const navLinkMap = {};
+  document.querySelectorAll('.nav-links .nav-link').forEach(link => {
+    const href = link.getAttribute('href').replace('#','');
+    navLinkMap[href] = link;
+  });
+  function updateScrollSpy() {
+    let current = '';
+    spySections.forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.getBoundingClientRect().top <= 120) current = id;
+    });
+    Object.values(navLinkMap).forEach(l => l.classList.remove('active-link'));
+    if (navLinkMap[current]) navLinkMap[current].classList.add('active-link');
+  }
+  window.addEventListener('scroll', updateScrollSpy);
+  updateScrollSpy();
+
+  // ----- KONAMI EASTER EGG -----
+  const konami = ['ArrowUp','ArrowUp','ArrowDown','ArrowDown','ArrowLeft','ArrowRight','ArrowLeft','ArrowRight','b','a'];
+  let konamiIdx = 0;
+  document.addEventListener('keydown', (e) => {
+    if (e.key === konami[konamiIdx] || e.key.toLowerCase() === konami[konamiIdx]) {
+      konamiIdx++;
+      if (konamiIdx === konami.length) { konamiIdx = 0; fireConfetti(); toast('🎮 Konami code activated! You found the easter egg!', 'success', 4000); }
+    } else { konamiIdx = 0; }
+  });
+
   // Initial reveal
   setTimeout(revealOnScroll, 100);
+  setTimeout(() => toast('👋 Welcome to NexusAI! Press ⌘K to search.', 'info', 4000), 800);
 
 })();
 </script>
-</body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a08e3656eb1897b0',t:'MTc4MDk4NzkzMw=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
